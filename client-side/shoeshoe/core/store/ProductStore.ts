@@ -19,10 +19,17 @@ export const useProductStore = create<ProductStoreState & ProductStoreAction>((s
 ))
 type ProductService = {
     getProducts: () => Promise<Product[]>
+    getProductById: (id: string) => Promise<Product>
 }
 export const ProductService: ProductService = {
     getProducts: async () => {
         const url = 'https://localhost:7265/api/Shoe/GetAllShoe';
+        const res = await fetch(url);
+        const json = await res.json();
+        return json;
+    },
+    getProductById: async (id: string) => {
+        const url = 'https://localhost:7265/api/Shoe/GetShoeById/' + id;
         const res = await fetch(url);
         const json = await res.json();
         return json;
