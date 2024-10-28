@@ -1,6 +1,6 @@
 
 "use client"
-import { Box, Button, Card, CardActions, CardContent, CardMedia, Chip, Grid2, LinearProgress, Typography, IconButton, Tooltip, Dialog, DialogTitle, DialogContent, DialogContentText, TextField, DialogActions, ButtonGroup } from '@mui/material';
+import { Box, Button, Card, CardActions, CardContent, CardMedia, Chip, Grid2, LinearProgress, Typography, IconButton, Tooltip } from '@mui/material';
 import { useProductStore } from '../../core/store/ProductStore';
 import React from 'react';
 import { DeleteOutline, EditOutlined } from '@mui/icons-material';
@@ -16,7 +16,7 @@ export const ProductList: React.FC<ProductListProps> = ({ isAdmin = false }) => 
     const [loading, setLoading] = React.useState<boolean>(false);
     const openEditProductDialog = async (id: string) => {
         await editProductDialogStore.loadProduct(id);
-        editProductDialogStore.setDialogState(open);
+        editProductDialogStore.setDialogState(true);
     }
     React.useEffect(() => {
         setLoading(true);
