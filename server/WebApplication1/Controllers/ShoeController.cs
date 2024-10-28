@@ -1,4 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
+using WebApplication1.Core.Entities;
+using WebApplication1.Model;
 using WebApplication1.Service;
 
 namespace WebApplication1.Controllers
@@ -17,6 +19,20 @@ namespace WebApplication1.Controllers
         {
             return Ok(await _shoeService.GetShoeById(id));
         }
-
+        [HttpPost]
+        public async Task<IActionResult> CreateShoe([FromBody] CreateShoe shoe)
+        {
+            return Ok(await _shoeService.CreateShoe(shoe));
+        }
+        [HttpPost]
+        public async Task<IActionResult> UpdateShoe([FromBody] Shoe shoe)
+        {
+            return Ok(await _shoeService.UpdateShoe(shoe));
+        }
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteShoe(Guid id)
+        {
+            return Ok(await _shoeService.DeleteShoe(id)); 
+        }
     }
 }
