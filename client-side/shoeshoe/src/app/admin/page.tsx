@@ -13,7 +13,6 @@ const AdminPage = () => {
     const handleTabChange = (event: React.SyntheticEvent, newIndex: number) => {
         setTabIndex(newIndex);
     };
-
     return (
         <Box padding={1}>
             <Tabs value={tabIndex} onChange={handleTabChange} aria-label="admin tabs">

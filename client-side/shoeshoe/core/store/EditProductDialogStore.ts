@@ -25,7 +25,7 @@ export const useEditProductDialogStore = create<EditProductDialogStoreState & Ed
             set({ product: loadedProduct })
         },
         updateProduct: async (product: Product) => {
-            return 'Not implemented'
+            return (await ProductService.updateProduct(product)).name;
         },
         deleteProduct: async (id: string) => {
             return 'Not implemented'

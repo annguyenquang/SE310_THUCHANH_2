@@ -18,6 +18,9 @@ export const ProductList: React.FC<ProductListProps> = ({ isAdmin = false }) => 
         await editProductDialogStore.loadProduct(id);
         editProductDialogStore.setDialogState(true);
     }
+    const deleteProduct = async (id: string) => {
+        await productStore.deleteProduct(id);
+    }
     React.useEffect(() => {
         setLoading(true);
         const promise: Promise<void> = productStore.loadProduct();
@@ -56,12 +59,12 @@ export const ProductList: React.FC<ProductListProps> = ({ isAdmin = false }) => 
                                         {isAdmin &&
                                             <div>
                                                 <Tooltip title="Edit product">
-                                                    <IconButton onClick={() => { openEditProductDialog(item.id) }}>
+                                                    <IconButton onClick={() => { openEditProductDialog(item.id ?? "") }}>
                                                         <EditOutlined color='primary'></EditOutlined>
                                                     </IconButton>
                                                 </Tooltip>
                                                 <Tooltip title="Delete product">
-                                                    <IconButton aria-label="" >
+                                                    <IconButton onClick={() => { deleteProduct(item.id ?? "") }} aria-label="" >
                                                         <DeleteOutline sx={{ color: red[500] }}></DeleteOutline>
                                                     </IconButton>
                                                 </Tooltip>
